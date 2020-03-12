@@ -21,7 +21,7 @@ if set == "Nordics":
 if set == "EU":
     countries = ["Finland", "France", "Germany", "Italy", "Sweden", "Spain"]                                                 
 
-days = 15
+days = 16 # "today until today - 15
 
 fig = plt.figure()
 ax = fig.add_subplot(111)
@@ -40,7 +40,6 @@ for country in range (0, len(countries)):
 
     # normalise to 1M population
     y = np.ravel(dc[dc.columns[-days:]].values) / p * 1E6
-
     x = range (0,days)
 
     ax.plot(x, y, color=colors[country], label=countries[country], zorder=2, alpha=1., linewidth = 2.)
@@ -48,7 +47,7 @@ for country in range (0, len(countries)):
     # labels 1, 10, 100, not 1E0, 1E1, 1E2, etc.
     plt.gca().yaxis.set_major_formatter(matplotlib.ticker.ScalarFormatter())
 
-ax.set_xticks([0,5,10,14])
+ax.set_xticks([0,5,10,15])
 ax.set_xticklabels(['-15', '-10', '-5', 'today'])
 
 plt.legend(loc='upper left', prop={'size': 12}, ncol=1)
